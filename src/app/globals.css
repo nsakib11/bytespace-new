@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: var(--font-poppins);
+  --font-sans: var(--font-satoshi), system-ui, -apple-system, sans-serif;
+
+  --color-brand-blue: #0445FF;
+  --color-brand-blue-hover: #0338CC;
+  --color-brand-blue-light: #E7F6FF;
+  --color-brand-blue-dark: #0036CC;
+  --color-brand-blue-gradient: linear-gradient(135deg, #0445FF 0%, #165DFB 100%);
+
+  --color-brand-lime: #CBFC01;
+  --color-brand-lime-hover: #B5E200;
+  --color-brand-lime-accent: #D4FB20;
+  --color-brand-lime-light: #F4FFD2;
+
+  --color-brand-dark: #242528;
+  --color-brand-navy: #191A1D;
+  --color-brand-slate: #3A3B3F;
+  --color-brand-muted: #71767B;
+  --color-brand-border: #E5E7EB;
+  --color-brand-bg: #F5F5F6;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FFFFFF;
+  --foreground: #242528;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-satoshi), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Custom scrollbar for modern browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Glassmorphism helpers */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-card-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dot pattern background */
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(13, 80, 232, 0.12) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.bg-dot-pattern-light {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }
