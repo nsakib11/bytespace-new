@@ -1,25 +1,18 @@
 import React from "react";
-import { PARTNERS } from "@/data/coursesData";
+import Image from "next/image";
 
 export default function PartnersSection() {
   return (
-    <section className="bg-white py-12 border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">
-          Trusted by 500+ forward-thinking tech companies & universities
-        </p>
-
-        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 opacity-75">
-          {PARTNERS.map((partner) => (
-            <div
-              key={partner.name}
-              className="flex items-center gap-2 text-slate-400 hover:text-slate-900 transition-colors cursor-default select-none"
-            >
-              <span className="text-xl sm:text-2xl font-black tracking-wider">
-                {partner.logo}
-              </span>
-            </div>
-          ))}
+    <section className="bg-white py-14 border-b border-[#E5E7EB]">
+      <div className="max-w-[1240px] mx-auto px-6 lg:px-8 flex justify-center items-center">
+        <div className="w-full max-w-[1080px] overflow-hidden flex justify-center items-center opacity-80 hover:opacity-100 transition-opacity">
+          <Image
+            src="/assets/logo_partners.svg"
+            alt="ByteSpace Partner Logos"
+            width={1132}
+            height={42}
+            className="w-full h-auto max-h-11 object-contain"
+          />
         </div>
       </div>
     </section>

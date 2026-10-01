@@ -2,136 +2,206 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff, Lock, Mail, ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
-import { ByteSpaceLogo, SparkleStar, GeometricAsterisk } from "@/components/ui/DecorativeElements";
+import { Eye, EyeOff, Star } from "lucide-react";
+import { ByteSpaceLogo } from "@/components/ui/DecorativeElements";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("designer@example.com");
+  const [password, setPassword] = useState("password123");
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage("");
-    setSuccessMessage("");
-
-    if (!email || !password) {
-      setErrorMessage("Please fill in both email and password.");
-      return;
-    }
-
     setIsLoading(true);
-
-    // Simulate authenticating
     setTimeout(() => {
       setIsLoading(false);
-      setSuccessMessage("Successfully signed in! Redirecting to dashboard...");
-      setTimeout(() => {
-        router.push("/");
-      }, 1500);
-    }, 1000);
+      router.push("/");
+    }, 800);
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col justify-between">
-      {/* Top Navbar */}
-      <header className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-        <Link href="/">
-          <ByteSpaceLogo />
-        </Link>
-        <div className="text-xs sm:text-sm text-slate-600">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="font-bold text-[#0D50E8] hover:underline">
-            Sign Up
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen bg-white flex items-center justify-center p-4 sm:p-6 lg:p-8">
+      {/* Container holding the split-screen card */}
+      <div className="w-full max-w-[1200px] min-h-[680px] rounded-[32px] overflow-hidden border border-[#E5E7EB] shadow-2xl grid grid-cols-1 lg:grid-cols-12 bg-white">
+        {/* Left Side: Deep Blue Hero Column */}
+        <div className="lg:col-span-6 bg-[#0445FF] p-8 sm:p-12 text-white relative overflow-hidden flex flex-col justify-between min-h-[520px]">
+          {/* Subtle Grid Background */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-20"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px),
+                                linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+              backgroundSize: "48px 48px",
+            }}
+          />
 
-      {/* Main Split-Screen Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center">
-          {/* Left Hero Graphic Card (Figma column 2) */}
-          <div className="hidden lg:flex lg:col-span-6 bg-[#0D50E8] rounded-3xl p-10 text-white relative overflow-hidden flex-col justify-between min-h-[580px] shadow-2xl">
-            {/* Geometric Motifs */}
-            <div className="absolute top-6 right-6 opacity-20 pointer-events-none">
-              <SparkleStar className="w-16 h-16 text-[#CEFF00]" />
-            </div>
-            <div className="absolute -bottom-10 -left-10 opacity-20 pointer-events-none">
-              <GeometricAsterisk className="w-32 h-32 text-[#CEFF00]" />
-            </div>
+          {/* Floating 3D Cone ornament */}
+          <div className="absolute top-1/2 -right-8 w-44 h-44 pointer-events-none select-none z-10 hidden sm:block opacity-90">
+            <Image
+              src="/assets/8670b841eac7883ecb790f84eb349c6c01db588b.png"
+              alt="3D Cone"
+              width={180}
+              height={180}
+              className="object-contain"
+            />
+          </div>
 
-            <div className="relative z-10 space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white/15 backdrop-blur-md text-white border border-white/20">
-                <SparkleStar className="w-3.5 h-3.5 text-[#CEFF00]" />
-                Student Portal
-              </div>
-              <h2 className="text-3xl font-black tracking-tight leading-tight">
-                Unlock Access to 2,000+ Courses & Direct Mentorship
+          {/* Top: Logo & Title */}
+          <div className="relative z-20 space-y-8">
+            <Link href="/" className="inline-block hover:opacity-90 transition-opacity">
+              <ByteSpaceLogo textColor="#F5F5F6" />
+            </Link>
+
+            <div className="space-y-3">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-[#F5F5F6] tracking-tight leading-tight">
+                Sign in with ease
               </h2>
-              <p className="text-blue-100 text-sm leading-relaxed max-w-md">
-                Continue where you left off, access your interactive code sandbox, and book your next 1-on-1 office hour session.
+              <p className="text-[15px] text-[#F5F5F6]/90 font-normal leading-relaxed max-w-md">
+                Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge.
               </p>
-            </div>
-
-            {/* Floating Preview Card */}
-            <div className="relative z-10 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 text-white space-y-3">
-              <div className="flex items-center justify-between text-xs text-blue-200">
-                <span>Currently In Progress</span>
-                <span className="font-bold text-[#CEFF00]">78% Complete</span>
-              </div>
-              <div className="font-bold text-base text-white">
-                Modern UI/UX Design Systems Masterclass
-              </div>
-              <div className="w-full bg-white/20 h-2 rounded-full overflow-hidden">
-                <div className="bg-[#CEFF00] h-full rounded-full w-[78%]" />
-              </div>
-              <div className="flex items-center gap-2 pt-1 text-xs text-blue-200">
-                <CheckCircle2 className="w-4 h-4 text-[#CEFF00]" />
-                <span>Next Lesson: Designing Accessible Color Tokens</span>
-              </div>
-            </div>
-
-            {/* Testimonial Quote */}
-            <div className="relative z-10 pt-4 border-t border-white/20 text-xs text-blue-100 flex items-center gap-3">
-              <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80"
-                alt="Student"
-                className="w-8 h-8 rounded-full object-cover ring-2 ring-[#CEFF00]"
-              />
-              <div>
-                <span className="font-semibold text-white">Alex Morgan</span>
-                <span className="text-blue-200"> — &ldquo;ByteSpace helped me transition into a Senior Product Designer role.&rdquo;</span>
-              </div>
             </div>
           </div>
 
-          {/* Right Form Card */}
-          <div className="lg:col-span-6 max-w-md mx-auto w-full py-4">
-            <div className="space-y-6">
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                  Welcome Back!
-                </h1>
-                <p className="text-slate-500 text-sm mt-1">
-                  Enter your credentials to access your ByteSpace student dashboard.
-                </p>
+          {/* Bottom Visual: Stacked Course Card & Happy Students Badge */}
+          <div className="relative z-20 pt-8 mt-auto">
+            {/* Main Preview Course Card */}
+            <div className="bg-white rounded-2xl p-4 shadow-xl text-[#242528] max-w-[340px] border border-white/20">
+              <div className="relative aspect-[341/195] w-full rounded-xl overflow-hidden mb-2 bg-[#F5F5F6]">
+                <Image
+                  src="/assets/4f3bdea5688b1a654db7a29b0bc5dd3563059d11.png"
+                  alt="the Power of Big Data"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex items-center gap-1.5 text-[11px] text-[#71767B] font-medium mb-1">
+                <span>17 Lessons</span>
+                <span>•</span>
+                <span>2 hours 16 mins</span>
+                <span>•</span>
+                <span>59 Comments</span>
+              </div>
+              <h4 className="font-semibold text-sm text-[#242528] line-clamp-1 mb-1">
+                the Power of Big Data
+              </h4>
+              <p className="text-[11px] text-[#71767B] mb-2">by purepearl studio</p>
+              <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                <span className="text-xs font-bold text-[#242528]">$25/lifetime</span>
+                <div className="flex items-center gap-1 text-[11px] font-bold text-[#242528]">
+                  <Star className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                  <span>4.5</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Overlapping Happy Students Badge */}
+            <div className="absolute right-0 -bottom-2 bg-white rounded-2xl p-3 shadow-2xl border border-gray-100 text-left hidden sm:block">
+              <h6 className="text-[11px] font-semibold text-[#242528]">Happy Students</h6>
+              <div className="flex items-center gap-1 mt-0.5">
+                <Star className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                <span className="text-xs font-bold text-[#242528]">4.5</span>
+                <span className="text-[10px] text-[#71767B]">(240)</span>
+              </div>
+              <div className="flex items-center mt-2 -space-x-1.5">
+                <Image
+                  src="/assets/9ef8cb329b949267cc8214b6727067c4a13af4b4.png"
+                  alt="Avatar"
+                  width={22}
+                  height={22}
+                  className="w-5 h-5 rounded-full border border-white object-cover"
+                />
+                <Image
+                  src="/assets/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.png"
+                  alt="Avatar"
+                  width={22}
+                  height={22}
+                  className="w-5 h-5 rounded-full border border-white object-cover"
+                />
+                <span className="w-5 h-5 rounded-full border border-white bg-[#CBFC01] text-[#242528] text-[9px] font-bold flex items-center justify-center">
+                  2K+
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side: Form Column */}
+        <div className="lg:col-span-6 p-8 sm:p-14 lg:p-16 flex flex-col justify-center bg-white">
+          <div className="max-w-[420px] w-full mx-auto space-y-6">
+            <div>
+              <span className="text-sm font-semibold text-[#0445FF]">
+                Sign In
+              </span>
+              <h1 className="text-3xl font-semibold text-[#242528] tracking-tight mt-1">
+                Welcome Back
+              </h1>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4 pt-2">
+              {/* Email */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-medium text-[#242528]">Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="designer@example.com"
+                  required
+                  className="w-full px-4 py-3 rounded-full border border-[#E5E7EB] text-sm text-[#242528] placeholder-[#71767B] focus:outline-none focus:border-[#242528] bg-white transition-colors"
+                />
+              </div>
+
+              {/* Password */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-medium text-[#242528]">Password</label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="********"
+                    required
+                    className="w-full px-4 py-3 rounded-full border border-[#E5E7EB] text-sm text-[#242528] placeholder-[#71767B] focus:outline-none focus:border-[#242528] bg-white transition-colors pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Sign In Button */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full mt-2 py-3.5 rounded-full bg-[#CBFC01] hover:bg-[#b8e800] text-[#242528] font-bold text-sm transition-all transform active:scale-95 shadow-md shadow-[#CBFC01]/20 disabled:opacity-50"
+              >
+                {isLoading ? "Signing in..." : "Sign In"}
+              </button>
+
+              {/* Divider */}
+              <div className="relative flex items-center justify-center my-4">
+                <div className="border-t border-[#E5E7EB] w-full" />
+                <span className="bg-white px-3 text-xs text-[#71767B]">or</span>
+                <div className="border-t border-[#E5E7EB] w-full" />
               </div>
 
               {/* Social Login Buttons */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="flex items-center justify-center gap-4">
+                {/* Google */}
                 <button
                   type="button"
-                  onClick={() => alert("Google Sign-In integration ready")}
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold transition-colors shadow-xs"
+                  className="w-12 h-12 rounded-full border border-[#E5E7EB] flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  aria-label="Login with Google"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path
                       fill="#4285F4"
                       d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"
@@ -142,152 +212,38 @@ export default function LoginPage() {
                     />
                     <path
                       fill="#FBBC05"
-                      d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.17 0 9.97 0 12s.45 3.83 1.25 5.42l4.03-3.15Z"
+                      d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15Z"
                     />
                     <path
                       fill="#EA4335"
-                      d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98Z"
+                      d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.93 6.72-4.93Z"
                     />
                   </svg>
-                  Google
                 </button>
+
+                {/* Facebook */}
                 <button
                   type="button"
-                  onClick={() => alert("GitHub Sign-In integration ready")}
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold transition-colors shadow-xs"
+                  className="w-12 h-12 rounded-full border border-[#E5E7EB] flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  aria-label="Login with Facebook"
                 >
-                  <svg className="w-4 h-4 fill-current text-slate-900" viewBox="0 0 24 24">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z" />
+                  <svg className="w-5 h-5 fill-[#1877F2]" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073Z" />
                   </svg>
-                  GitHub
                 </button>
               </div>
 
-              {/* Divider */}
-              <div className="relative flex items-center justify-center">
-                <div className="border-t border-slate-200 w-full" />
-                <span className="bg-white px-3 text-xs text-slate-400 font-medium uppercase tracking-wider">
-                  or email
-                </span>
+              {/* Bottom Switch Link */}
+              <div className="pt-4 text-center text-sm text-[#71767B]">
+                New user?{" "}
+                <Link href="/signup" className="font-semibold text-[#0445FF] hover:underline">
+                  Create an account
+                </Link>
               </div>
-
-              {/* Form Feedback */}
-              {errorMessage && (
-                <div className="flex items-center gap-2 p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-xs font-medium">
-                  <AlertCircle className="w-4 h-4 shrink-0" />
-                  {errorMessage}
-                </div>
-              )}
-              {successMessage && (
-                <div className="flex items-center gap-2 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-xs font-medium">
-                  <CheckCircle2 className="w-4 h-4 shrink-0" />
-                  {successMessage}
-                </div>
-              )}
-
-              {/* Main Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Email Field */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1.5">
-                    Email Address
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    <input
-                      type="email"
-                      required
-                      placeholder="student@bytespace.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0D50E8] focus:ring-2 focus:ring-blue-100 transition-all"
-                    />
-                  </div>
-                </div>
-
-                {/* Password Field */}
-                <div>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <label className="block text-xs font-bold text-slate-700">
-                      Password
-                    </label>
-                    <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        alert("Password reset email sent to your address.");
-                      }}
-                      className="text-xs font-medium text-[#0D50E8] hover:underline"
-                    >
-                      Forgot password?
-                    </a>
-                  </div>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                      <Lock className="w-4 h-4" />
-                    </div>
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      required
-                      placeholder="••••••••••••"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0D50E8] focus:ring-2 focus:ring-blue-100 transition-all"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600"
-                    >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Remember Me Checkbox */}
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    className="h-4 w-4 rounded border-slate-300 text-[#0D50E8] focus:ring-[#0D50E8]"
-                  />
-                  <label htmlFor="remember-me" className="ml-2 block text-xs text-slate-600 font-medium">
-                    Keep me signed in for 30 days
-                  </label>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full py-3 px-4 rounded-xl bg-[#0D50E8] hover:bg-[#0B43C3] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70"
-                >
-                  {isLoading ? (
-                    <span className="flex items-center gap-2">
-                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Signing in...
-                    </span>
-                  ) : (
-                    <>
-                      <span>Sign In to ByteSpace</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
+            </form>
           </div>
         </div>
-      </main>
-
-      {/* Footer Notice */}
-      <footer className="py-4 border-t border-slate-100 text-center text-xs text-slate-400">
-        By continuing, you agree to ByteSpace&apos;s Terms of Service and Privacy Policy.
-      </footer>
+      </div>
     </div>
   );
 }

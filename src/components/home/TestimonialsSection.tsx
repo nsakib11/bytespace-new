@@ -1,62 +1,65 @@
 import React from "react";
-import { Star, Quote } from "lucide-react";
+import Image from "next/image";
+import { Star } from "lucide-react";
 import { TESTIMONIALS } from "@/data/coursesData";
-import { SparkleStar } from "@/components/ui/DecorativeElements";
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-20 bg-slate-50 border-t border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EEF4FF] text-[#0D50E8]">
-            <SparkleStar className="w-3.5 h-3.5 text-[#0D50E8]" />
-            Student Reviews
+    <section className="py-20 lg:py-28 bg-white border-b border-[#E5E7EB]">
+      <div className="max-w-[1240px] mx-auto px-6 lg:px-8">
+        {/* Two-column Section Header from Figma */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-16">
+          <div className="lg:col-span-5">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold text-[#242528] tracking-tight leading-[1.2]">
+              Discover What Our Community Is Saying
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Student&apos;s Feedback & Success Stories
-          </h2>
-          <p className="text-slate-600 text-base">
-            Discover how ByteSpace helped professionals pivot careers, land high-paying tech jobs, and master complex engineering concepts.
-          </p>
+          <div className="lg:col-span-7">
+            <p className="text-[16px] text-[#71767B] font-normal leading-relaxed">
+              At ByteSpace, our vibrant community of learners and creators is at the heart of what we do. Hear directly from those who have experienced the transformative journey of learning and creating on our platform. Explore testimonials that reflect the diverse perspectives of enthusiastic learners and accomplished creators.
+            </p>
+          </div>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* 3 Testimonial Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {TESTIMONIALS.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative group hover:-translate-y-1"
+              className="rounded-[24px] border border-[#E5E7EB] p-8 bg-white flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-[#242528] transition-all duration-300"
             >
               <div>
-                {/* Top Row: Stars & Quote Icon */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex text-amber-400">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400 stroke-amber-400" />
-                    ))}
-                  </div>
-                  <div className="w-9 h-9 rounded-full bg-[#EEF4FF] text-[#0D50E8] flex items-center justify-center">
-                    <Quote className="w-4 h-4 fill-current" />
-                  </div>
+                {/* 5 Stars Rating */}
+                <div className="flex items-center gap-1 mb-6 text-[#F59E0B]">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-current" />
+                  ))}
                 </div>
 
-                {/* Quote Text */}
-                <p className="text-slate-700 text-sm leading-relaxed mb-6 italic">
+                {/* Quote */}
+                <p className="text-[#242528] text-[15px] sm:text-[16px] font-normal leading-relaxed mb-8">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
               </div>
 
-              {/* Author Row */}
-              <div className="flex items-center gap-3.5 pt-4 border-t border-slate-100">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="w-11 h-11 rounded-full object-cover ring-2 ring-slate-100"
-                />
+              {/* Author Info */}
+              <div className="flex items-center gap-3.5 pt-6 border-t border-[#E5E7EB]">
+                <div className="w-12 h-12 rounded-full overflow-hidden relative border border-[#E5E7EB] shrink-0">
+                  <Image
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    width={48}
+                    height={48}
+                    className="object-cover"
+                  />
+                </div>
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">{testimonial.name}</div>
-                  <div className="text-xs text-slate-500 font-medium">{testimonial.role}</div>
+                  <h4 className="font-semibold text-base text-[#242528]">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-xs text-[#71767B] font-medium mt-0.5">
+                    {testimonial.role}
+                  </p>
                 </div>
               </div>
             </div>

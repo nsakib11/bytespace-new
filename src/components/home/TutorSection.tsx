@@ -1,105 +1,120 @@
 import React from "react";
-import Link from "next/link";
-import { CheckCircle2, Star, Calendar, MessageSquare, ArrowRight, ShieldCheck } from "lucide-react";
-import { SparkleStar, GeometricAsterisk } from "@/components/ui/DecorativeElements";
+import Image from "next/image";
+import { Check, Star, TrendingUp } from "lucide-react";
+
+const CHECKLIST = [
+  "Share Your Expertise",
+  "Monetize Your Passion",
+  "Flexibility and Autonomy",
+  "Build a Community",
+];
 
 export default function TutorSection() {
-  const perks = [
-    "Personalized 1-on-1 live code & design reviews with industry leads",
-    "Tailored career roadmaps, resume feedback, and mock technical interviews",
-    "Direct messaging channel access for real-time debugging help",
-    "Lifetime networking opportunities with our global alumni network",
-  ];
-
   return (
-    <section id="mentors" className="py-20 bg-slate-50 border-y border-slate-200/80 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Mentor Visual & Graphic Cards */}
-          <div className="lg:col-span-6 relative flex justify-center">
-            <div className="relative w-full max-w-md">
-              {/* Decorative Lime Backdrop Shape */}
-              <div className="absolute -top-6 -left-6 w-32 h-32 rounded-3xl bg-[#CEFF00] -z-0 rotate-12 opacity-80" />
-              <div className="absolute -bottom-6 -right-6 w-40 h-40 rounded-full bg-[#0D50E8]/10 -z-0" />
+    <section id="creators" className="py-20 lg:py-28 bg-[#F5F5F6]/60 border-b border-[#E5E7EB] overflow-hidden">
+      <div className="max-w-[1240px] mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: Instructor Photo & Telemetry Badges */}
+          <div className="lg:col-span-6 relative flex justify-center items-center order-2 lg:order-1">
+            {/* Background container */}
+            <div className="relative w-full max-w-[480px] h-[500px] sm:h-[560px] rounded-[32px] bg-white border border-[#E5E7EB] overflow-hidden flex items-end justify-center shadow-lg">
+              <Image
+                src="/assets/0d6596fb1df66aaf843ee85722f439fada233946.png"
+                alt="ByteSpace Creator"
+                width={435}
+                height={596}
+                className="object-contain object-bottom h-[94%] w-auto"
+              />
+            </div>
 
-              {/* Main Image */}
-              <div className="relative z-10 w-full h-[440px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
-                  alt="Senior mentor explaining code"
-                  className="w-full h-full object-cover"
-                />
+            {/* Floating Revenue Card 1 (Left Top) */}
+            <div className="absolute -left-3 sm:left-2 top-8 sm:top-14 z-20 bg-white rounded-2xl p-4 shadow-2xl border border-gray-100 text-left min-w-[180px]">
+              <div className="flex items-center justify-between text-xs text-[#71767B] font-medium mb-1">
+                <span>Total Revenue</span>
+                <span className="text-[11px]">July 1-28</span>
               </div>
+              <div className="flex items-center justify-between mt-1">
+                <span className="text-xl font-bold text-[#242528]">$120.29</span>
+                <span className="inline-flex items-center text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                  +12$
+                </span>
+              </div>
+            </div>
 
-              {/* Floating Badge 1: 1-on-1 Sessions */}
-              <div className="absolute top-8 -left-4 sm:-left-8 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#CEFF00] text-[#0B0F19] flex items-center justify-center font-bold">
-                  <Calendar className="w-5 h-5" />
-                </div>
+            {/* Floating Revenue Card 2 (Right Center) */}
+            <div className="absolute -right-3 sm:right-2 top-48 sm:top-56 z-20 bg-white rounded-2xl p-4 shadow-2xl border border-gray-100 text-left min-w-[190px]">
+              <div className="flex items-center justify-between text-xs text-[#71767B] font-medium mb-1">
+                <span>Year to Date</span>
+                <span className="text-[11px]">2023</span>
+              </div>
+              <div className="flex items-center justify-between mt-1">
+                <span className="text-xl font-bold text-[#242528]">$1,200.38</span>
+                <span className="inline-flex items-center text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                  +12$
+                </span>
+              </div>
+            </div>
+
+            {/* Floating Happy Students Badge (Bottom Left) */}
+            <div className="absolute -left-2 sm:left-6 bottom-6 sm:bottom-10 z-20 bg-white rounded-2xl p-4 shadow-2xl border border-gray-100 text-left">
+              <div className="flex items-center justify-between gap-4">
                 <div>
-                  <div className="text-xs text-slate-500 font-semibold">Weekly AMAs</div>
-                  <div className="text-sm font-extrabold text-slate-900">1-on-1 Office Hours</div>
+                  <h5 className="text-xs font-semibold text-[#242528]">Happy Students</h5>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <Star className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                    <span className="text-xs font-bold text-[#242528]">4.5</span>
+                    <span className="text-xs text-[#71767B]">(240)</span>
+                  </div>
                 </div>
               </div>
-
-              {/* Floating Badge 2: Mentor Satisfaction */}
-              <div className="absolute bottom-8 -right-4 sm:-right-8 z-20 bg-[#0B0F19] text-white p-4 rounded-2xl shadow-2xl border border-slate-800 flex items-center gap-3 max-w-[220px]">
-                <div className="w-10 h-10 rounded-xl bg-[#0D50E8] text-white flex items-center justify-center font-bold shrink-0">
-                  <Star className="w-5 h-5 fill-[#CEFF00] text-[#CEFF00]" />
+              <div className="flex items-center mt-2.5 -space-x-2">
+                <div className="w-7 h-7 rounded-full border-2 border-white overflow-hidden relative">
+                  <Image
+                    src="/assets/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.png"
+                    alt="Student"
+                    width={28}
+                    height={28}
+                    className="object-cover"
+                  />
                 </div>
-                <div>
-                  <div className="text-xs font-bold text-white">4.98 / 5.0 Rating</div>
-                  <div className="text-[11px] text-slate-400">Over 15k hours mentored</div>
+                <div className="w-7 h-7 rounded-full border-2 border-white overflow-hidden relative">
+                  <Image
+                    src="/assets/83fb3e04056cc892636460bee5791aa3f243854c.png"
+                    alt="Student"
+                    width={28}
+                    height={28}
+                    className="object-cover"
+                  />
                 </div>
+                <span className="w-7 h-7 rounded-full border-2 border-white bg-[#CBFC01] text-[#242528] text-[10px] font-bold flex items-center justify-center">
+                  2K+
+                </span>
               </div>
             </div>
           </div>
 
           {/* Right Column: Copy & Checklist */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EEF4FF] text-[#0D50E8]">
-              <SparkleStar className="w-3.5 h-3.5 text-[#0D50E8]" />
-              Mentorship Network
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Find the Best Tutor for Your Learning Journey
+          <div className="lg:col-span-6 space-y-6 order-1 lg:order-2">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold text-[#242528] tracking-tight leading-[1.2]">
+              Create & Manage Courses Easily.
             </h2>
 
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              Accelerate past tutorials by pairing with experienced staff engineers and design leaders. Get honest critique on your code, sharpen your systems thinking, and break into top companies.
+            <p className="text-[16px] text-[#71767B] font-normal leading-relaxed">
+              ByteSpace supports individuals or entities in the creation, publication, and administration of educational courses.
             </p>
 
             {/* Checklist */}
-            <div className="space-y-3.5 pt-2">
-              {perks.map((perk, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#CEFF00] text-[#0B0F19] flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                    <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />
+            <div className="space-y-4 pt-4">
+              {CHECKLIST.map((item) => (
+                <div key={item} className="flex items-center gap-3.5">
+                  <div className="w-6 h-6 rounded-full bg-[#0445FF] text-white flex items-center justify-center shrink-0 shadow-sm">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
                   </div>
-                  <span className="text-sm font-medium text-slate-700 leading-snug">
-                    {perk}
+                  <span className="text-[17px] font-medium text-[#242528]">
+                    {item}
                   </span>
                 </div>
               ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="pt-6 flex flex-wrap items-center gap-4">
-              <Link
-                href="/courses"
-                className="px-7 py-3.5 rounded-full font-bold text-sm bg-[#0D50E8] hover:bg-[#0B43C3] text-white shadow-md hover:shadow-lg transition-all flex items-center gap-2 group"
-              >
-                <span>Find Your Mentor</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-
-              <Link
-                href="/signup"
-                className="px-7 py-3.5 rounded-full font-bold text-sm bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 transition-colors"
-              >
-                Join Mentorship Tier
-              </Link>
             </div>
           </div>
         </div>

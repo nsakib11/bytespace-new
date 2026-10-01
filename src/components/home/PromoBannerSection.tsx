@@ -1,53 +1,63 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { SparkleStar, GeometricAsterisk, WavyShape } from "@/components/ui/DecorativeElements";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export default function PromoBannerSection() {
   return (
-    <section className="relative py-20 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl bg-[#0D50E8] text-white p-8 sm:p-14 lg:p-16 overflow-hidden shadow-2xl">
-          {/* Abstract Geometric Elements */}
-          <div className="absolute top-4 left-6 opacity-20 pointer-events-none">
-            <SparkleStar className="w-14 h-14 text-[#CEFF00]" />
+    <section className="py-16 lg:py-24 bg-white border-b border-[#E5E7EB]">
+      <div className="max-w-[1240px] mx-auto px-6 lg:px-8">
+        {/* Blue Curved Container */}
+        <div className="relative rounded-[32px] bg-[#0445FF] overflow-hidden px-8 py-16 sm:px-12 sm:py-20 text-center text-white shadow-2xl">
+          {/* Subtle Grid Pattern Background */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-15"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
+                                linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px)`,
+              backgroundSize: "48px 48px",
+            }}
+          />
+
+          {/* Left Floating 3D Cone */}
+          <div className="absolute -top-10 -left-10 w-44 lg:w-60 h-44 lg:h-60 pointer-events-none select-none z-10 hidden sm:block opacity-90">
+            <Image
+              src="/assets/5b3686bc5eadc510e3e04da588f9299d8bd3194c.png"
+              alt="3D Cone"
+              width={240}
+              height={240}
+              className="object-contain"
+            />
           </div>
-          <div className="absolute -bottom-8 -right-8 opacity-25 pointer-events-none">
-            <GeometricAsterisk className="w-36 h-36 text-[#CEFF00]" />
-          </div>
-          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 opacity-15 pointer-events-none hidden md:block">
-            <div className="w-64 h-64 rounded-full border-8 border-dashed border-[#CEFF00]" />
+
+          {/* Right Floating 3D Cone/Torus */}
+          <div className="absolute -bottom-10 -right-10 w-48 lg:w-64 h-48 lg:h-64 pointer-events-none select-none z-10 hidden sm:block opacity-90">
+            <Image
+              src="/assets/92fc70a39c36138c0e55699b18b3e88bd1f86a59.png"
+              alt="3D Ornament"
+              width={260}
+              height={260}
+              className="object-contain"
+            />
           </div>
 
           {/* Content */}
-          <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-bold text-white uppercase tracking-wider">
-              <SparkleStar className="w-3.5 h-3.5 text-[#CEFF00]" />
-              Start Your Journey Today
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
-              Shape Your Future with World-Class Online Learning
+          <div className="relative z-20 max-w-3xl mx-auto space-y-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold text-[#F5F5F6] tracking-tight leading-[1.2]">
+              Unlock Your Potential as a Creator with ByteSpace
             </h2>
 
-            <p className="text-blue-100 text-base sm:text-lg leading-relaxed font-normal">
-              Join over 50,000+ ambitious learners leveling up in Next.js, AI, and UI/UX Design. Get unlimited course access and 1-on-1 mentorship.
+            <p className="text-[16px] text-[#F5F5F6]/90 font-normal leading-relaxed">
+              Experience the collaboration of numerous creators and an expanding selection of courses. Register now and become a part of a community comprising over 10,000 local and international creators. Utilize our Course Editor, and showcase your expertise by publishing your finest course on the ByteSpace Course Library.
             </p>
 
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="pt-4">
               <Link
                 href="/signup"
-                className="w-full sm:w-auto px-8 py-4 rounded-full font-extrabold text-sm bg-[#CEFF00] hover:bg-[#bcec00] text-[#0B0F19] transition-transform hover:scale-105 shadow-xl flex items-center justify-center gap-2 active:scale-95"
+                className="inline-flex items-center gap-2 bg-[#CBFC01] hover:bg-[#b8e800] text-[#242528] font-bold text-[16px] px-8 py-4 rounded-full transition-all transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-[#CBFC01]/20"
               >
-                <span>Get Started Now</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <Link
-                href="/courses"
-                className="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm transition-colors flex items-center justify-center"
-              >
-                Explore All Courses
+                <span>Join as Creator</span>
+                <ArrowUpRight className="w-5 h-5 text-[#242528]" />
               </Link>
             </div>
           </div>

@@ -1,11 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Search, Play, Star, Users, Award, CheckCircle2, ArrowRight } from "lucide-react";
-import { SparkleStar, GeometricAsterisk } from "@/components/ui/DecorativeElements";
+import { useRouter } from "next/navigation";
+import { Search, Star } from "lucide-react";
 
 export default function HeroSection() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,172 +19,192 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#0D50E8] text-white pt-12 pb-20 lg:pt-16 lg:pb-28">
-      {/* Background Decorative Graphic Shapes */}
-      <div className="absolute top-10 left-10 opacity-20 pointer-events-none">
-        <SparkleStar className="w-16 h-16 text-[#CEFF00]" />
-      </div>
-      <div className="absolute bottom-12 left-1/3 opacity-20 pointer-events-none">
-        <GeometricAsterisk className="w-20 h-20 text-[#CEFF00]" />
-      </div>
-      <div className="absolute top-16 right-8 opacity-25 pointer-events-none">
-        <div className="w-48 h-48 rounded-full border-4 border-dashed border-[#CEFF00]" />
-      </div>
-      <div className="absolute -bottom-10 right-1/4 opacity-15 pointer-events-none">
-        <div className="w-72 h-72 rounded-full bg-[#CEFF00] blur-3xl" />
+    <section className="relative overflow-hidden bg-[#0445FF] text-white pt-10 pb-0 lg:pt-14">
+      {/* Background Subtle Grid Pattern */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-20"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+          backgroundSize: "64px 64px",
+        }}
+      />
+
+      {/* Floating 3D Ornaments */}
+      {/* Left 3D Torus */}
+      <div className="absolute top-[220px] -left-12 lg:left-8 w-44 lg:w-64 h-44 lg:h-64 pointer-events-none select-none z-10 hidden sm:block animate-float">
+        <Image
+          src="/assets/e3b55902d605bfc37a0809e6dc6dfe61b6701897.png"
+          alt="3D Torus Ornament"
+          width={280}
+          height={280}
+          className="object-contain"
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Copy & Search */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            {/* Top Pill / Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/20 backdrop-blur-md text-white text-xs sm:text-sm font-semibold shadow-inner">
-              <span className="flex h-2 w-2 rounded-full bg-[#CEFF00] animate-ping" />
-              <span className="text-[#CEFF00] font-bold">New Check:</span>
-              <span>Over 2,000+ Online Courses Available</span>
-            </div>
+      {/* Left 3D Cone */}
+      <div className="absolute bottom-28 left-4 lg:left-24 w-32 lg:w-48 h-32 lg:h-48 pointer-events-none select-none z-10 hidden md:block">
+        <Image
+          src="/assets/8670b841eac7883ecb790f84eb349c6c01db588b.png"
+          alt="3D Cone Ornament"
+          width={200}
+          height={200}
+          className="object-contain"
+        />
+      </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
-              Get Access to <br className="hidden sm:inline" />
-              <span className="relative inline-block text-white">
-                Unlimited Courses
-                <svg
-                  className="absolute -bottom-2 left-0 w-full h-3 text-[#CEFF00] fill-none stroke-current"
-                  viewBox="0 0 200 12"
-                  preserveAspectRatio="none"
-                >
-                  <path d="M2 9C50 2 150 2 198 9" strokeWidth="4" strokeLinecap="round" />
-                </svg>
-              </span>{" "}
-              Available
-            </h1>
+      {/* Right 3D Torus */}
+      <div className="absolute top-[240px] -right-10 lg:right-6 w-48 lg:w-64 h-48 lg:h-64 pointer-events-none select-none z-10 hidden sm:block">
+        <Image
+          src="/assets/cda676feaf7fba8b0f81b47c5ea2707d7acb5217.png"
+          alt="3D Torus Ornament"
+          width={280}
+          height={280}
+          className="object-contain"
+        />
+      </div>
 
-            {/* Subheadline */}
-            <p className="text-blue-100 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Learn practical, career-defining skills from senior tech leaders. Build production-grade projects and accelerate your journey in tech and design.
-            </p>
+      {/* Right 3D Cone */}
+      <div className="absolute bottom-32 right-6 lg:right-24 w-36 lg:w-52 h-36 lg:h-52 pointer-events-none select-none z-10 hidden md:block">
+        <Image
+          src="/assets/92fc70a39c36138c0e55699b18b3e88bd1f86a59.png"
+          alt="3D Cone Ornament"
+          width={220}
+          height={220}
+          className="object-contain"
+        />
+      </div>
 
-            {/* Interactive Search Bar */}
-            <form
-              onSubmit={handleSearch}
-              className="bg-white p-2 rounded-2xl sm:rounded-full shadow-2xl max-w-xl mx-auto lg:mx-0 flex flex-col sm:flex-row items-center gap-2"
+      {/* Container */}
+      <div className="max-w-[1240px] mx-auto px-6 lg:px-8 relative z-20 text-center">
+        {/* Headline */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-semibold tracking-tight text-[#F5F5F6] leading-[1.15] max-w-4xl mx-auto">
+          Get Access to Hundreds <br />
+          Courses Available
+        </h1>
+
+        {/* Subtitle */}
+        <p className="mt-5 text-base sm:text-lg text-[#F5F5F6]/90 max-w-2xl mx-auto font-normal leading-relaxed">
+          Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.
+        </p>
+
+        {/* Search Bar */}
+        <div className="mt-8 max-w-[560px] mx-auto">
+          <form
+            onSubmit={handleSearch}
+            className="flex items-center bg-white rounded-full p-2 pl-6 shadow-2xl transition-all focus-within:ring-2 focus-within:ring-[#CBFC01]"
+          >
+            <input
+              type="text"
+              placeholder="Course, topic, creator"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="flex-1 bg-transparent text-[#242528] placeholder-[#71767B] text-[16px] outline-none font-normal"
+            />
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 bg-[#CBFC01] hover:bg-[#b5e200] text-[#242528] font-semibold text-[15px] px-7 py-3 rounded-full transition-transform active:scale-95 shadow-sm"
             >
-              <div className="flex items-center gap-3 px-4 w-full text-slate-800">
-                <Search className="w-5 h-5 text-slate-400 shrink-0" />
-                <input
-                  type="text"
-                  placeholder="What skill do you want to learn today?"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full py-2.5 bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full sm:w-auto px-7 py-3 rounded-xl sm:rounded-full bg-[#CEFF00] hover:bg-[#bcec00] text-[#0B0F19] text-sm font-bold tracking-tight transition-transform hover:scale-[1.02] active:scale-95 shadow-md flex items-center justify-center gap-1.5 shrink-0"
-              >
-                Search
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
+              <Search className="w-4 h-4 text-[#242528]" />
+              <span>Search </span>
+            </button>
+          </form>
+        </div>
 
-            {/* Social Proof / Stats */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-blue-100">
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2.5 overflow-hidden">
-                  <img
-                    className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
-                    alt="Student"
-                  />
-                  <img
-                    className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
-                    alt="Student"
-                  />
-                  <img
-                    className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80"
-                    alt="Student"
-                  />
-                  <div className="flex items-center justify-center h-9 w-9 rounded-full bg-[#CEFF00] text-[#0B0F19] ring-2 ring-white font-extrabold text-xs">
-                    +50k
-                  </div>
-                </div>
-                <div>
-                  <div className="font-bold text-white leading-tight">50,000+ Enrolled</div>
-                  <div className="text-xs text-blue-200">Across 120 countries</div>
+        {/* Hero Visual Stage with Centered Student Photo & Floating Badges */}
+        <div className="relative mt-12 sm:mt-16 max-w-[820px] mx-auto flex justify-center items-end">
+          {/* Main Student Portrait */}
+          <div className="relative w-[340px] sm:w-[480px] md:w-[540px] h-[340px] sm:h-[480px] md:h-[530px] z-10 flex items-end justify-center">
+            <Image
+              src="/assets/29a52a24e51266edcd7d57d73392ee5fc4833220.png"
+              alt="ByteSpace Student"
+              width={578}
+              height={541}
+              priority
+              className="object-contain object-bottom drop-shadow-2xl"
+            />
+          </div>
+
+          {/* Floating Badge 1: UI/UX Design (Left Top) */}
+          <div className="absolute left-0 sm:left-4 md:-left-10 top-16 sm:top-24 z-20 bg-white text-[#242528] rounded-2xl p-4 sm:p-5 shadow-2xl border border-gray-100/80 text-left animate-in fade-in slide-in-from-left duration-500">
+            <h4 className="text-base sm:text-lg font-bold text-[#242528]">UI/UX Design</h4>
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-[#71767B] mt-1 font-medium">
+              <span>200 Courses</span>
+              <span className="text-[#CBFC01] font-black">•</span>
+              <span>1000+ Students</span>
+            </div>
+          </div>
+
+          {/* Floating Badge 2: Happy Students (Left Bottom) */}
+          <div className="absolute left-0 sm:left-2 md:-left-12 bottom-12 sm:bottom-16 z-20 bg-white text-[#242528] rounded-2xl p-4 sm:p-5 shadow-2xl border border-gray-100/80 text-left">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <h5 className="text-xs sm:text-sm font-semibold text-[#242528]">Happy Students</h5>
+                <div className="flex items-center gap-1.5 mt-1">
+                  <Star className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
+                  <span className="text-xs sm:text-sm font-bold text-[#242528]">4.5</span>
+                  <span className="text-xs text-[#71767B]">(240)</span>
                 </div>
               </div>
-
-              <div className="h-8 w-[1px] bg-white/20 hidden sm:block" />
-
-              <div className="flex items-center gap-2">
-                <div className="flex text-amber-300">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-300 stroke-amber-300" />
-                  ))}
-                </div>
-                <div className="text-xs text-blue-100">
-                  <span className="font-bold text-white">4.9/5</span> (4.8k reviews)
-                </div>
+            </div>
+            {/* Avatar stack */}
+            <div className="flex items-center mt-3 -space-x-2">
+              <Image
+                src="/assets/9ef8cb329b949267cc8214b6727067c4a13af4b4.png"
+                alt="Student avatar"
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-full border-2 border-white object-cover"
+              />
+              <Image
+                src="/assets/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.png"
+                alt="Student avatar"
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-full border-2 border-white object-cover"
+              />
+              <Image
+                src="/assets/83fb3e04056cc892636460bee5791aa3f243854c.png"
+                alt="Student avatar"
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-full border-2 border-white object-cover"
+              />
+              <div className="w-8 h-8 rounded-full border-2 border-white bg-[#CBFC01] text-[#242528] text-[11px] font-bold flex items-center justify-center">
+                2K+
               </div>
             </div>
           </div>
 
-          {/* Right Column: Hero Graphic with Badges */}
-          <div className="lg:col-span-5 relative flex justify-center items-center">
-            {/* Main Visual Card Container */}
-            <div className="relative w-full max-w-md">
-              {/* Decorative Lime Circle behind student */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[380px] sm:h-[380px] rounded-full bg-[#CEFF00] -z-0 transform rotate-6" />
-
-              {/* Student Photo */}
-              <div className="relative z-10 mx-auto w-72 sm:w-80 h-[380px] sm:h-[420px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-slate-100">
-                <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                  alt="ByteSpace student learning online"
-                  className="w-full h-full object-cover object-center"
-                />
+          {/* Floating Badge 3: Learning Progress (Right Center) */}
+          <div className="absolute right-0 sm:right-4 md:-right-8 top-32 sm:top-40 z-20 bg-white text-[#242528] rounded-2xl p-4 sm:p-5 shadow-2xl border border-gray-100/80 text-left">
+            <h5 className="text-xs sm:text-sm font-semibold text-[#242528]">Learning Progress</h5>
+            <div className="flex items-center gap-3 mt-3">
+              {/* Circular Gauge */}
+              <div className="relative w-12 h-12 flex items-center justify-center">
+                <svg className="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
+                  <path
+                    className="text-gray-100"
+                    strokeWidth="3.5"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    className="text-[#0445FF]"
+                    strokeDasharray="55, 100"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                </svg>
+                <span className="absolute text-xs font-bold text-[#242528]">55%</span>
               </div>
-
-              {/* Floating Badge 1: Top Right - Active Students */}
-              <div className="absolute -top-4 right-0 z-20 bg-white/95 backdrop-blur-md text-slate-900 px-4 py-2.5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce [animation-duration:3s]">
-                <div className="w-10 h-10 rounded-xl bg-[#EEF4FF] text-[#0D50E8] flex items-center justify-center font-bold">
-                  <Users className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs font-semibold text-slate-500">Live Mentorship</div>
-                  <div className="text-sm font-extrabold text-slate-900">450+ Active Tutors</div>
-                </div>
-              </div>
-
-              {/* Floating Badge 2: Bottom Left - Top Rated Course Card */}
-              <div className="absolute -bottom-6 -left-4 sm:-left-8 z-20 bg-white/95 backdrop-blur-md text-slate-900 p-3.5 rounded-2xl shadow-2xl border border-slate-100 max-w-[240px]">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#CEFF00] text-[#0B0F19]">
-                    Top Rated
-                  </span>
-                  <div className="flex items-center text-amber-500 text-xs font-bold">
-                    <Star className="w-3.5 h-3.5 fill-current" />
-                    <span className="ml-1">4.95</span>
-                  </div>
-                </div>
-                <div className="text-xs font-bold text-slate-900 line-clamp-1">
-                  UI/UX Design Systems
-                </div>
-                <div className="mt-1 flex items-center justify-between text-[11px] text-slate-500">
-                  <span>42 Lessons</span>
-                  <span className="text-[#0D50E8] font-bold">$49.99</span>
-                </div>
-              </div>
-
-              {/* Floating Badge 3: Verified Certificate */}
-              <div className="absolute bottom-20 -right-4 z-20 bg-[#0B0F19] text-white px-3.5 py-2 rounded-xl shadow-lg flex items-center gap-2 border border-slate-800">
-                <Award className="w-4 h-4 text-[#CEFF00]" />
-                <span className="text-xs font-bold tracking-tight">Verified Certificate</span>
+              <div className="text-xs text-[#71767B]">
+                <p className="font-medium text-[#242528]">In Progress</p>
+                <p>3 of 6 completed</p>
               </div>
             </div>
           </div>

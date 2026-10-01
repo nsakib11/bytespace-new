@@ -1,35 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #0D50E8;
-  --color-brand-blue-hover: #0B43C3;
-  --color-brand-blue-light: #EEF4FF;
-  --color-brand-blue-dark: #072D85;
-  --color-brand-blue-gradient: linear-gradient(135deg, #0D50E8 0%, #165DFB 100%);
+  --font-display: var(--font-poppins);
+  --font-sans: var(--font-satoshi), system-ui, -apple-system, sans-serif;
 
-  --color-brand-lime: #CEFF00;
-  --color-brand-lime-hover: #B8E600;
-  --color-brand-lime-light: #F7FFD6;
-  --color-brand-lime-dark: #8BAE00;
+  --color-brand-blue: #0445FF;
+  --color-brand-blue-hover: #0338CC;
+  --color-brand-blue-light: #E7F6FF;
+  --color-brand-blue-dark: #0036CC;
+  --color-brand-blue-gradient: linear-gradient(135deg, #0445FF 0%, #165DFB 100%);
 
-  --color-brand-dark: #0B0F19;
-  --color-brand-navy: #0F172A;
-  --color-brand-slate: #1E293B;
-  --color-brand-muted: #64748B;
-  --color-brand-border: #E2E8F0;
-  --color-brand-bg: #F8FAFC;
+  --color-brand-lime: #CBFC01;
+  --color-brand-lime-hover: #B5E200;
+  --color-brand-lime-accent: #D4FB20;
+  --color-brand-lime-light: #F4FFD2;
+
+  --color-brand-dark: #242528;
+  --color-brand-navy: #191A1D;
+  --color-brand-slate: #3A3B3F;
+  --color-brand-muted: #71767B;
+  --color-brand-border: #E5E7EB;
+  --color-brand-bg: #F5F5F6;
 }
 
 :root {
   --background: #FFFFFF;
-  --foreground: #0F172A;
+  --foreground: #242528;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-satoshi), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), sans-serif;
 }
 
 /* Custom scrollbar for modern browsers */

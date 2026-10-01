@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Star, Clock, BookOpen, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { Star } from "lucide-react";
 import { Course } from "@/data/coursesData";
 
 interface CourseCardProps {
@@ -9,91 +10,99 @@ interface CourseCardProps {
 
 export default function CourseCard({ course }: CourseCardProps) {
   return (
-    <div className="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1">
+    <div className="group bg-white rounded-[20px] border border-[#E5E7EB] p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1">
       {/* Thumbnail Banner */}
-      <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
-        <img
+      <Link href={`/courses/${course.id}`} className="relative aspect-[341/195] w-full overflow-hidden rounded-[14px] bg-[#F5F5F6] block">
+        <Image
           src={course.image}
           alt={course.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        {/* Category Pill */}
-        <div className="absolute top-3 left-3 flex gap-2">
-          <span className="px-2.5 py-1 text-xs font-bold rounded-lg bg-white/95 text-slate-900 shadow-sm backdrop-blur-sm">
-            {course.category}
-          </span>
-          {course.badge && (
-            <span className="px-2.5 py-1 text-xs font-extrabold rounded-lg bg-[#CEFF00] text-[#0B0F19] shadow-sm">
-              {course.badge}
-            </span>
-          )}
-        </div>
-      </div>
+      </Link>
 
       {/* Content Container */}
-      <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+      <div className="pt-4 flex-1 flex flex-col justify-between">
         <div>
-          {/* Metadata Row: Level & Duration */}
-          <div className="flex items-center gap-3 text-xs text-slate-500 mb-2.5 font-medium">
-            <span className="flex items-center gap-1">
-              <BookOpen className="w-3.5 h-3.5 text-slate-400" />
-              {course.lessonsCount} Lessons
-            </span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span className="flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-slate-400" />
-              {course.duration}
-            </span>
+          {/* Metadata Row: Lessons • Duration • Comments */}
+          <div className="flex items-center gap-1.5 text-xs text-[#71767B] font-medium mb-2">
+            <span>{course.lessonsCount} Lessons</span>
+            <span>•</span>
+            <span>{course.duration}</span>
+            <span>•</span>
+            <span>{course.commentsCount || 59} Comments</span>
           </div>
 
           {/* Title */}
-          <h3 className="font-bold text-base sm:text-lg text-slate-900 group-hover:text-[#0D50E8] transition-colors line-clamp-2 leading-snug mb-3">
+          <h3 className="font-semibold text-[18px] text-[#242528] group-hover:text-[#0445FF] transition-colors line-clamp-1 leading-snug mb-1">
             <Link href={`/courses/${course.id}`}>
               {course.title}
             </Link>
           </h3>
 
-          {/* Rating */}
-          <div className="flex items-center gap-2 mb-4">
-            <div className="flex items-center text-amber-500">
-              <Star className="w-4 h-4 fill-amber-400 stroke-amber-400" />
-              <span className="ml-1 text-xs font-bold text-slate-900">{course.rating.toFixed(1)}</span>
-            </div>
-            <span className="text-xs text-slate-400">({course.reviewsCount} reviews)</span>
-          </div>
+          {/* Instructor Subtitle */}
+          <p className="text-xs text-[#71767B] font-normal mb-3">
+            by {course.instructor.name}
+          </p>
 
-          {/* Instructor Row */}
-          <div className="flex items-center gap-2.5 pt-3 border-t border-slate-100 mb-4">
-            <img
-              src={course.instructor.avatar}
-              alt={course.instructor.name}
-              className="w-7 h-7 rounded-full object-cover ring-1 ring-slate-200"
-            />
-            <div className="text-xs">
-              <div className="font-semibold text-slate-800">{course.instructor.name}</div>
-              <div className="text-[11px] text-slate-400 line-clamp-1">{course.instructor.role}</div>
+          {/* Level and Students Avatars Stack */}
+          <div className="flex items-center justify-between gap-2 mb-4">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#F5F5F6] text-[#242528] text-xs font-medium">
+              {course.level}
+            </span>
+
+            {/* Avatars Stack + Count */}
+            <div className="flex items-center -space-x-2">
+              <div className="w-6 h-6 rounded-full border border-white overflow-hidden relative">
+                <Image
+                  src="/assets/3fe559181733e0fb69226caee836e40092facb44.png"
+                  alt="Student"
+                  width={24}
+                  height={24}
+                  className="object-cover"
+                />
+              </div>
+              <div className="w-6 h-6 rounded-full border border-white overflow-hidden relative">
+                <Image
+                  src="/assets/0577f0e9b7fca2f32639871454da0de95f951709.png"
+                  alt="Student"
+                  width={24}
+                  height={24}
+                  className="object-cover"
+                />
+              </div>
+              <div className="w-6 h-6 rounded-full border border-white overflow-hidden relative">
+                <Image
+                  src="/assets/d0cd3adb501c64c1b4cf766de6abb9fe8925fb5f.png"
+                  alt="Student"
+                  width={24}
+                  height={24}
+                  className="object-cover"
+                />
+              </div>
+              <span className="w-6 h-6 rounded-full border border-white bg-[#CBFC01] text-[#242528] text-[10px] font-bold flex items-center justify-center">
+                {course.studentsBadge || "26+"}
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Pricing & CTA */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-          <div>
-            <div className="text-xs text-slate-400 line-through font-medium">
-              ${course.originalPrice.toFixed(2)}
-            </div>
-            <div className="text-xl font-black text-slate-900 tracking-tight">
-              ${course.price.toFixed(2)}
-            </div>
+        {/* Pricing & Rating Row */}
+        <div className="flex items-center justify-between pt-3 border-t border-[#E5E7EB]">
+          <div className="flex items-baseline gap-1">
+            <span className="text-xl font-bold text-[#242528] tracking-tight">
+              ${course.price}
+            </span>
+            <span className="text-xs text-[#71767B] font-medium">
+              {course.period || "/lifetime"}
+            </span>
           </div>
 
-          <Link
-            href={`/courses/${course.id}`}
-            className="inline-flex items-center gap-1 px-4 py-2 rounded-xl text-xs font-bold bg-[#EEF4FF] text-[#0D50E8] hover:bg-[#0D50E8] hover:text-white transition-all shadow-sm group/btn"
-          >
-            Enroll Now
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-          </Link>
+          <div className="flex items-center gap-1">
+            <Star className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
+            <span className="text-sm font-bold text-[#242528]">{course.rating.toFixed(1)}</span>
+          </div>
         </div>
       </div>
     </div>
