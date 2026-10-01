@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { ByteSpaceLogo } from "@/components/ui/DecorativeElements";
 
 export default function Navbar() {
@@ -63,13 +63,13 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Action Menu */}
-          <div className="hidden sm:flex items-center gap-6">
+          {/* Right Action Menu: Sign In, Join Us, and Shopping Bag Icon */}
+          <div className="hidden sm:flex items-center gap-6 lg:gap-7">
             <Link
               href="/login"
               className={
                 isHome
-                  ? "text-[16px] font-medium text-white/95 hover:text-[#CBFC01] transition-colors"
+                  ? "text-[16px] font-normal text-white hover:text-[#CBFC01] transition-colors"
                   : "text-[16px] font-medium text-[#242528] hover:text-[#0445FF] transition-colors"
               }
             >
@@ -78,19 +78,35 @@ export default function Navbar() {
 
             <Link
               href="/signup"
-              className={`inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full text-[15px] font-semibold transition-all transform hover:-translate-y-0.5 active:translate-y-0 ${
+              className={
                 isHome
-                  ? "bg-[#CBFC01] hover:bg-[#b8e800] text-[#242528] shadow-md shadow-[#CBFC01]/20"
-                  : "bg-[#0445FF] hover:bg-[#0336CC] text-white shadow-md shadow-[#0445FF]/20"
-              }`}
+                  ? "text-[16px] font-normal text-white hover:text-[#CBFC01] transition-colors"
+                  : "text-[16px] font-medium text-[#242528] hover:text-[#0445FF] transition-colors"
+              }
             >
-              <span>Join Us</span>
-              <ArrowUpRight className="w-4 h-4" />
+              Join Us
+            </Link>
+
+            <Link
+              href="/courses"
+              className={`p-1.5 transition-colors hover:scale-105 active:scale-95 ${
+                isHome ? "text-white hover:text-[#CBFC01]" : "text-[#242528] hover:text-[#0445FF]"
+              }`}
+              aria-label="Cart / Catalog"
+            >
+              <ShoppingBag className="w-5 h-5 stroke-[1.8]" />
             </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center sm:hidden">
+          <div className="flex items-center sm:hidden gap-3">
+            <Link
+              href="/courses"
+              className={`p-1.5 ${isHome ? "text-white" : "text-[#242528]"}`}
+              aria-label="Cart"
+            >
+              <ShoppingBag className="w-5 h-5" />
+            </Link>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
