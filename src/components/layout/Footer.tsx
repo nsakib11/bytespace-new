@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Search } from "lucide-react";
 import { ByteSpaceLogo } from "@/components/ui/DecorativeElements";
 
 const BROWSE_LINKS = [
@@ -71,8 +70,7 @@ export default function Footer() {
                   type="submit"
                   className="inline-flex items-center gap-1.5 bg-[#CBFC01] hover:bg-[#b8e800] text-[#242528] font-semibold text-sm px-6 py-2.5 rounded-full transition-transform active:scale-95 shadow-xs"
                 >
-                  <Search className="w-3.5 h-3.5 text-[#242528]" />
-                  <span>{submitted ? "Subscribed!" : "Search "}</span>
+                  <span>{submitted ? "Subscribed!" : "Subscribe"}</span>
                 </button>
               </div>
             </form>
